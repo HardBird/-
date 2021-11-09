@@ -90,6 +90,33 @@ SELECT gender
   FROM temp
 ```
 ![images](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile6.uf.tistory.com%2Fimage%2F99D8F6415CFFC3073165AA)
+```sql
+CASE WHEN 표현식 
+이는 DECODE의 가독성을 조금 더 올리고 오라클 SQL말고 범위나 특정 조건을 사용해야하는 환경이나 
+범용성이 높게 사용하는 ORACLE 방식의 case문이다. 이 역시 else를 생략할 수 있으며 사용법은 아래와 같다. 
+
+|| IF문 방식 
+SELECT ename
+     , deptno
+     , CASE WHEN deptno = '10' THEN 'New York'
+            WHEN deptno = '20' THEN 'Dallas'
+            ELSE 'Unknown'
+       END AS loc_name
+  FROM emp
+ WHERE job = 'MANAGER'
+ 
+ || Switch문 방식
+ SELECT ename
+     , deptno
+     , CASE deptno 
+            WHEN 10 THEN 'New York'
+            WHEN 20 THEN 'Dallas'
+            ELSE 'Unknown'
+       END AS loc_name
+  FROM scott.emp
+ WHERE job = 'MANAGER'
+```
+![images](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F03vYC%2FbtqE5fwA1US%2FUf4jRvoPOFKFeEYGBcuZ0k%2Fimg.png)
 
 #### SQL 날짜함수
 - SYSDATE : 현재 시스템 일자 반환
@@ -110,7 +137,7 @@ SELECT SYSDATE
 ```
 
 #### SQL 변환함수 
-- TO_CHAR(char or date , format)  : 숫자나 날짜를 format에 맞는 문자로 변환                                                                                  ex) to_char(sysdate , 'YYYY/MM/DD'), to_char(12345, 'L9,999.99')
+- TO_CHAR(char or date , format)  : 숫자나 날짜를 format에 맞는 문자로 변환 마리아DB의 DATE_FORMAT과 같은 개념이다.                                                                   ex) to_char(sysdate , 'YYYY/MM/DD'), to_char(12345, 'L9,999.99')
 - TO_NUMBER(char,format) : data를 format에 맞는 숫자로 변환
 - TO_DATE(char, format) : char를 format에 맞는 날짜로 변환
 - TO_TIMESTAMP(char,format) : char을 format에 맞는 타임스탬프로 변환
