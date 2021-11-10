@@ -7,7 +7,7 @@ GROUP BY 컬럼명 ----------------    (3)         공통적인 데이터들끼�
 HAVING 그룹 조건 ---------------    (4)         주어진 주건에 맞는 그룹들을 추출
 ORDER BY 컬럼명 ----------------    (6)         추출된 데이터들을 정렬
 ```
-## SQL FUNCTION vs PROCEDURE 
+
 ![images](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FRmiEB%2FbtqLWHOz4Pr%2FM0elhPJskIocPKKShzPrTk%2Fimg.png)
 ## SQL PROCEDURE 
 
@@ -16,7 +16,7 @@ ORDER BY 컬럼명 ----------------    (6)         추출된 데이터들을 정
  - dbms_output.putline()으로 저장된 변수애 대해서 값을 볼 수 있다.
   - RETURN 형식은 BEGIN 사이에 RETURN을 적어주거나 OUT 변수를 통해서 반환해줄 수 있다.
  - IN은 데이터를 대입 OUT은 데이터를 출력 INOUT은 데이터를 삽입하거나 출력할 수 있다.
- - 이거는 직접 그려가면서 이해하면 한방에 이해된다 해당 [링크](https://afsdzvcx123.tistory.com/entry/%EC%98%A4%EB%9D%BC%ED%81%B4-PLSQL-PLSQL-%ED%94%84%EB%A1%9C%EC%8B%9C%EC%A0%80-%EB%A7%A4%EA%B0%9C%EB%B3%80%EC%88%98-IN-OUT-%EC%9D%B4%EB%9E%80)에서 한번 공부해보자   
+ - 이거는 직접 그려가면서 이해하면 한방에 이해된다 해당 [링크](https://afsdzvcx123.tistory.com/entry/%EC%98%A4%EB%9D%BC%ED%81%B4-PLSQL-PLSQL-%ED%94%84%EB%A1%9C%EC%8B%9C%EC%A0%80-%EB%A7%A4%EA%B0%9C%EB%B3%80%EC%88%98-IN-OUT-%EC%9D%B4%EB%9E%80)에서 한번 공부해보자.   
     
     ```sql
     CREATE OR REPLACE PROCEDURE 프로시저이름 
@@ -31,13 +31,10 @@ ORDER BY 컬럼명 ----------------    (6)         추출된 데이터들을 정
         기능 구현;
     END;
     ```
-    
-    
 ## SQL FUNCTION 
-    - 프로세스의 절차를 담당하는 문법이며 여러개의 결과값을 반환해주는 문법이다.    
-    - 무조건 최소 하나의 결과값을 도출해내야한다.  
 
-    
+    - 프로세스의 절차를 담당하는 문법이며 한개의 결과값을 반환해주는 문법이다.    
+    - 무조건 최소 하나의 결과값을 도출해내야한다.  
     ```sql 
     CREATE OR REPLACE FUNCTION 함수이름 
     IS
@@ -60,8 +57,8 @@ ORDER BY 컬럼명 ----------------    (6)         추출된 데이터들을 정
 	    RETURN SUBSTR(name, 2, 3);
     END;
     ```
-    
 
+    
     
     
 #### SQL 숫자함수 
