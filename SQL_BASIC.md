@@ -25,17 +25,19 @@ ORDER BY 컬럼명 ----------------    (6)         추출된 데이터들을 정
         변수이름 [IN/OUT/INOUT]데이터타입;  -- 프로시저내에서 사용할 변수선언
         변수이름 [IN/OUT/INOUT]데이터타입;
         변수이름 [IN/OUT/INOUT]데이터타입;
-        ..
+        ...
         
     BEGIN
         기능 구현;
     END;
+    
     ```
+    
 ## SQL FUNCTION 
 
     - 프로세스의 절차를 담당하는 문법이며 한개의 결과값을 반환해주는 문법이다.    
     - 무조건 최소 하나의 결과값을 도출해내야한다.  
-    ```sql 
+    
     CREATE OR REPLACE FUNCTION 함수이름 
     IS
         
@@ -45,9 +47,7 @@ ORDER BY 컬럼명 ----------------    (6)         추출된 데이터들을 정
         기능 구현;
         return 값;
     END;
-    ```
-    
-    ```sql
+
     예시)
     CREATE REPLACE FUNCTION f_name
 	    (name VARCHAR2)
@@ -56,7 +56,7 @@ ORDER BY 컬럼명 ----------------    (6)         추출된 데이터들을 정
     BEGIN
 	    RETURN SUBSTR(name, 2, 3);
     END;
-    ```
+
 
     
     
