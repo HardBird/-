@@ -55,7 +55,9 @@
 |<|작다|
 |<=|작거나 같다|
 ```sql
-select name as 학생이름 from class.student where major_id = (select major.major_id from class.major where major_title = '컴퓨터공학과');
+select name as 학생이름    
+from class.student    
+where major_id = (select major.major_id from class.major where major_title = '컴퓨터공학과');
 ```
 ##### 복수행 서브쿼리 
 
@@ -65,5 +67,7 @@ select name as 학생이름 from class.student where major_id = (select major.ma
 |EXIST|서브쿼리의 값이 있는 경우 반환|
 |NOT EXIST|서브쿼리의 값이 없는 경우 반환|
 ```sql
-select name as 학생이름 from class.student where major_id in (select major.major_id from class.major where major_title in ('컴퓨터공학과','국문학과'));
+select name as 학생이름   
+from class.student    
+where major_id in (select major.major_id from class.major where major_title in ('컴퓨터공학과','국문학과'));
 ```
