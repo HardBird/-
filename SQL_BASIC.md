@@ -22,6 +22,7 @@ ORDER BY 컬럼명 ----------------    (6)         추출된 데이터들을 정
 - LOWER(char) : char를 소문자로
 - UPPER(char) : char을 대문자로
 - CONCAT(char1, char2) : char1 char2를 붙인다. (|| 구문을 사용해서도 구현할 수 있다.)
+- CONCAT_WS(string, char1, char2) : char1 char2 사이에 구문자 string을 붙인다. 
 - SUBSTR(char, pos,len) : char의 pos번째 문자부터 len길이만큼 잘라서 반환.
 - LTRIM: char1의 좌측부터 char2를 찾아서 삭제후 반환 (한번만 삭제한다.)
 - RTRIM: LTRIM과 비슷. 오른쪽부터 검색을 진행
