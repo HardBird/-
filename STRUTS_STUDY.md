@@ -1,7 +1,10 @@
-### 스트럿츠 프레임구조 
+## 스트럿츠 프레임구조 
 [이미지를 못가져와서 해당 링크참조](https://kkiuk.tistory.com/67)
 - 기본적으로 스프링 MVC 패턴처럼 큰 틀에서는 Model, View, Controller로 나뉘어서 작동한다. 
 - View 에서는 JSP, Controller에서는 Action 관련된 클래스, Model에서는 DB관련 내용들이 저장되어있다.
+
+## 스트럿츠 문법
+[문법의 양이 많으나 설명에대한 래퍼가 적다. 필요할때 찾아서 쓰자.](https://secr.tistory.com/151)
 
 ## 스트럿츠 작동원리 
 - ActionServlet 
