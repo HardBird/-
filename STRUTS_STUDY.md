@@ -4,8 +4,8 @@
 - View 에서는 JSP, Controller에서는 Action 관련된 클래스, Model에서는 DB관련 내용들이 저장되어있다.
 
 ## 스트럿츠 문법
-[문법의 양이 많으나 설명에대한 래퍼가 적다. 필요할때 찾아서 쓰자.](https://secr.tistory.com/151)
-[프로젝트에서 제일 유사하게 사용하는 문법을 정리한 사이트이다. 프로젝트 이해할 때 참고하면서보자/](https://heeestorys.tistory.com/469)
+[문법의 양이 많으나 설명에대한 래퍼가 적다. 필요할때 찾아서 쓰자.](https://secr.tistory.com/151)   
+[프로젝트에서 제일 유사하게 사용하는 문법을 정리한 사이트이다. 프로젝트 이해할 때 참고하면서보자.](https://heeestorys.tistory.com/469)
 ## 스트럿츠 작동원리 
 - ActionServlet 
   - 클라이언트의 요청을 직접받는 곳이며, 해당 요청을 처리해줄 RequestProcessor를 찾아서 전달한다.
