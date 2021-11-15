@@ -36,7 +36,8 @@
     - struts에서 이벤트를 받으면 해당 이벤트에 맞는 DAO로 가서 이벤트처리후에 이벤트값을 return 해준다. ( return 값은 임의이다. ) 
     - return 값은 임의이지만 success를 준다면 result 태그에서 아무것도 옵션을 주지않은 result로 이동하여서 이벤트를 수행한다.
     - 이는 보통 라우팅경로를 주어서 값을 가지고 이동할 수 있게 해주며, 조금 더 확장된 기능으로는 interceptor가 있다.
-    - 옵션을 주지 않으면 default로 result는 success로 가지만 기본적으로 name="success"를 줘서 코드리뷰를 할 때에 명확성을 주도록 하자. 
+    - 옵션을 주지 않으면 default로 result는 success로 가지만    
+    기본적으로 name="success"를 줘서 코드리뷰를 할 때에 명확성을 주도록 하자. 
       
   - 만약에 라우팅을 하는 경로를 따라가라가려하는데 보이지 않는다면 밑에 namespace를 따라가보자 .. 종종 숨어있다. 
     - 해당 다이렉팅 폴더에서 action 값을 찾으면 해당 struts도 따라서 찾을 수 있다.
