@@ -48,6 +48,13 @@ NOCACHE;
 ```
 - 시퀀스.NEXTVAL 을하면 테이블내의 가진 마지막 시퀀스 값에 +1이 된 값이 자동으로 인덱싱된다.
 - 시퀀스.CURRVAL 을하면 해당 테이블내의 시퀀스값을 출력해줍니다. 
+```sql
+-- 해당 시퀀스의 다음값 
+   SELECT testSeq.NEXTVAL FROM DUAL; -- 해당 시퀀스의 현재값
+   SELECT testSeq.CURRVAL FROM DUAL;
+--INSERT에서의 시퀀스 다음값 
+   INSERT INTO oracleStudy VALUES(testSeq.NEXTVAL, 'studyName' , 'class' , A);
+```
 - 시퀀스를 수정 할 떼에 사작값이나 최솟값&최댓값에 관련하여 값을 변동할 때 영향을 끼치는 상황이 발생할 경우, 값을 변경할 수 없다.   
    (최댓값을 넘거나 최솟값보다 작은 경우)
 - 시퀀스 역시도 테이블이기에 DROP을 사용하여서 삭제할 수 있다. 
