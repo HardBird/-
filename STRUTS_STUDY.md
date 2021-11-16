@@ -43,3 +43,111 @@
     - 해당 다이렉팅 폴더에서 action 값을 찾으면 해당 struts도 따라서 찾을 수 있다.
   - 보통 데이터를 뿌려줄때에는 s:iterator id="temp" value="#id" 를통해서 특정 id값을 대입해서 데이터를 빼온뒤에    
   그 값을 넣어주고있는 iterator의 id값을 이용해서 페이지 핸들링 처리를 해주면 된다. 
+  
+## 스트럿츠 인터셉터 
+ - 이는 사전 유효성을 검사해주는 문법이다.
+ - 가장큰 메인 struts 파일에서 import를 하여서 초기 선언을해주고 사용하고자하는 action에서
+으로 선언을 해주어서 비즈니스 로직전 검사를 수행할 수 있다.
+ - 기본적으로 프로젝트 프로세스는 뷰 -> 인터셉트 -> 비니지스 로직의 과정을 거친다. 뷰에서 유효성검사를 실시해도, console로 값을 넣으면 들어가기 때문에,
+보통은 공통적으로 해야하는 세션및 쿠키체크나 계열사 URL 필터링등을 수행해준다. 로그인이후에 비지니스 로직에서 유효성 검사를 하면
+이미 DB에 접근해서 유효성 검사를하기에 보안적으로 문제가 되는 부분이 있어서 interceptor에서 필터링을 해줘야 한다.
+## 스트럿츠 디자인패턴 
+ - 보통 페이지의 레이아웃 효율성과 재사용성을 높이기 위해서 사용되는 기술이다.
+ - 기본적으로는 데코레이터 디자인패턴을 사용한다. 
+ - 개념으로는 여러페이지가 있는데 헤더가 고정돼서 사용이 될 경우에 작성한다. (리액트의 HOC 개념이랑 같다.)
+ - 사용방법
+  - 첫째로 pom.xml, web.xml에 의존성을 추가해준다.    
+ ```html
+    -pom.xml
+         <dependency>
+            <groupId>opensymphony</groupId>
+            <artifactId>sitemesh</artifactId>
+            <version>2.4.2</version>
+        </dependency>
+
+    -web.xml 
+        <!-- sitemesh -->
+            <filter>
+            <filter-name>sitemesh</filter-name>
+            <filter-class>com.opensymphony.module.sitemesh.filter.PageFilter
+            </filter-class>
+            </filter>
+            <filter-mapping>
+            <filter-name>sitemesh</filter-name>
+            <url-pattern>/*</url-pattern>
+            </filter-mapping>
+```
+  - 추가를 하였으면 새로운 xml파일을 만들어서 기본세팅인 decorators.xml 과 의존성들을 추가해줄 sitemesh.xml을 추가해준다.        
+```html
+    -decorators.xml 
+            <?xml version="1.0" encoding="UTF-8"?>
+
+            <decorators defaultdir="/decorators">
+            <excludes>
+            <pattern>/index.do</pattern>
+            </excludes>
+
+            <decorator name="layout" page="/WEB-INF/views/layout/layout.jsp">
+            <pattern>/*</pattern>
+            </decorator>
+
+            <decorator name="layout2" page="/WEB-INF/views/layout/layout2.jsp">
+            <pattern>/web/*</pattern>
+            </decorator>
+            </decorators>
+
+    -sitemesh.xml (예시)
+            <sitemesh>
+
+            <page-parsers>
+            <parser default="true" class="com.opensymphony.module.sitemesh.parser.DefaultPageParser"/>
+            <parser content-type="text/html" class="com.opensymphony.module.sitemesh.parser.FastPageParser"/>
+            </page-parsers>
+
+            <decorator-mappers>
+            <mapper class="com.opensymphony.module.sitemesh.mapper.PageDecoratorMapper">
+            <param name="property.1" value="meta.decorator"/>
+            <param name="property.2" value="decorator"/>
+            </mapper>
+
+            <mapper class="com.opensymphony.module.sitemesh.mapper.FrameSetDecoratorMapper">
+            </mapper>
+
+            <mapper class="com.opensymphony.module.sitemesh.mapper.AgentDecoratorMapper">
+            <param name="match.MSIE" value="ie"/>
+            <param name="match.Mozilla [" value="ns"/>
+            <param name="match.Opera" value="opera"/>
+            <param name="match.Lynx" value="lynx"/>
+            </mapper>
+
+            <mapper class="com.opensymphony.module.sitemesh.mapper.PrintableDecoratorMapper">
+            <param name="decorator" value="printable"/>
+            <param name="parameter.name" value="printable"/>
+            <param name="parameter.value" value="true"/>
+            </mapper>
+
+            <mapper class="com.opensymphony.module.sitemesh.mapper.RobotDecoratorMapper">
+            <param name="decorator" value="robot"/>
+            </mapper>
+
+            <mapper class="com.opensymphony.module.sitemesh.mapper.ParameterDecoratorMapper">
+            <param name="decorator.parameter" value="decorator"/>
+            <param name="parameter.name" value="confirm"/>
+            <param name="parameter.value" value="true"/>
+            </mapper>
+
+            <mapper class="com.opensymphony.module.sitemesh.mapper.FileDecoratorMapper">
+            </mapper>
+
+            <mapper class="com.opensymphony.module.sitemesh.mapper.ConfigDecoratorMapper">
+            <param name="config" value="/WEB-INF/decorators.xml"/>
+            </mapper>
+
+            </decorator-mappers>
+
+            </sitemesh>
+```     
+ - 그리고 베이스가 되는 레이아웃 페이지에서 상단 <header> 태그안에 <decorator:head /> 혹은 <decorator:body />  를 추가해준다. 
+  - 그리고 베이스를 받는 레이아웃 부분에서는 그냥 <head></head>로 태그를 닫아두면 자동으로 sitemash가 적용이된다. 
+  - 그리고 한글이 깨질수 있으니 UTF8 인코딩을 해주는것을 잊지 말자 ! 
+  
