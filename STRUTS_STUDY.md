@@ -150,4 +150,71 @@
  - 그리고 베이스가 되는 레이아웃 페이지에서 상단 <header> 태그안에 <decorator:head /> 혹은 <decorator:body />  를 추가해준다. 
   - 그리고 베이스를 받는 레이아웃 부분에서는 그냥 <head></head>로 태그를 닫아두면 자동으로 sitemash가 적용이된다. 
   - 그리고 한글이 깨질수 있으니 UTF8 인코딩을 해주는것을 잊지 말자 ! 
-  - xml파일에서는 부등호가 적용이 되지 않는다 그렇기 때문에 &lt ;(<) &gt ;(>) 를 사용하자 
+  - xml파일에서는 부등호가 적용이 되지 않는다 그렇기 때문에 &lt ;(<) &gt ;(>) 를 사용하자    
+  ## JAVA extends 
+  - 상속의 대표적인 형태이다.
+  - 모든 선언/정의는 부모가 하며, 자식은 오버라이딩 할 필요 없이 부모의 메소드와 변수를 그대로 사용할 수 있다. 
+  - 물론 필요헤 따라 오버라이딩을 할 수 있다. 
+  ```java
+    class Vehicle {
+    protected int speed = 3;
+
+    public int getSpeed(){
+      return speed;
+    }
+    public void setSpeed(int speed){
+      this.speed = speed;
+    }
+  }
+
+  class Car extends Vehicle{
+    public void printspd(){
+      System.out.println(speed);
+    }
+  }
+
+  public class ExtendsSample {
+    public static main (String[] args){
+      Car A = new Car();
+      System.out.println(A.getSpeed());
+      A.printspd();
+    }
+  
+  cf)
+  Car 클래스는 Vehicle 클래스의 변수와 메소드를 상속 받았다.
+  따라서, Car 클래스는 Vehicle 클래스의 speed, getSpeed(), setSpeed()를 사용할 수 있다.
+  하지만, Java는 "다중상속"을 지원하지 않는다.
+  즉, 부모 클래스가 두 개 이상 존재할 수 없다는 것이다.
+  ex) public class Son extends Father, Mother {...}
+  하지만, Java는 implements를 사용해 여러 interface를 상속 받을 수 있다.
+  ```   
+  ## JAVA implements
+  - 부모는 선언만 하며, 자식이 오버라이딩을해서 사용하는 구조이다.
+  - 이는 부모의 메서드를 재정의를 해야해서 상소의 개념에 벗어날지 모르지만 JAVA특정상 계약 및 분류의 의미가 강하여 사용한다. 
+  ```java
+     interface TestInterface{
+    public static int num = 8;
+    public void fun1();
+    public void fun2();
+  }
+
+  class InterfaceExam implements TestInterface{
+    @Override
+    public void fun1(){
+      System.out.println(num);
+    }
+
+    @Override
+    public void fun2() {
+
+    }
+  }
+
+  public class InterfaceSample{
+    public static void main(String args[]){
+      InterfaceExam exam = new InterfaceExam();
+      exam.fun1();
+    }
+  }  
+  ```   
+  
