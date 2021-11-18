@@ -217,7 +217,8 @@
     }
   }  
   ```   
-  ## 인프라인증 DI&CI
+  ## 인프라인증 CI&DI
+  ![images](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F991CFB385EE8DDB123)
   - CI
     - Connecting Information 의 약자이며 88bytes로 이루어져있다.
     - 이는 주민등록번호처럼 사용자의 고유 번호라고 하면 된다.
