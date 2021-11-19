@@ -244,7 +244,7 @@ ON (a.aa = b.aa AND b.cc = 7);
 3 | 6 | null | null
 
 ```   
-## PARTION BY vs GROUP BY
+## PARTITION BY vs GROUP BY
 - GROUP BY는 데이터를 요약해서 표로 나타내주는 문법이다.
 - PARTION BY는 데이터 전체를 표로 나타낸주는 문법이다. 
 - PARTION BY는 함수() OVER(PARTITION BY 테이블명) 으로 정의한다.
