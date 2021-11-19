@@ -243,6 +243,26 @@ ON (a.aa = b.aa AND b.cc = 7);
 2 | 5 | null | null
 3 | 6 | null | null
 
+```   
+## PARTION BY vs GROUP BY
+- GROUP BY는 데이터를 요약해서 표로 나타내주는 문법이다.
+- PARTION BY는 데이터 전체를 표로 나타낸주는 문법이다. 
+- PARTION BY는 함수() OVER(PARTITION BY 테이블명) 으로 정의한다.
+- GROUP BY는 SELECT 절에서 함수()를 선언하고 맨 마지막에 GROUP BY 테이블명 으로 정의한다.   
+```sql
+-GROUP BY
+SELECT Continent
+	   ,SUM(GNP)
+FROM world.country
+GROUP BY Continent;
+
+-PARTITION BY 
+SELECT Continent
+	   ,SUM(GNP) OVER(PARTITION BY Continent)
+FROM world.country;
 ```
+#### 실행결과 
+![images](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FboxQJF%2Fbtq6VDY4XFp%2Fc7Fee6yWKejd2whKAyBrB1%2Fimg.png)   
+![images](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fc24lEE%2Fbtq6Wv0zFd5%2F2aXK8DkoOznE7hTfxJvlNK%2Fimg.png)
 
 
