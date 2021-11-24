@@ -233,3 +233,23 @@
   - Single Sign-On의 약자로 한번의 로그인으로 다른곳에서도 자동적으로 사용하여 별도의 인증없이 서비스를 이용하는 기술이다.     
   - (1) 사용자 통합 로그인 (2) 인증 서버 (3) 통합 에이전트 : 각 정보 시스템에 대한 정보 관리으로 이루어져있다.     
   - 사용자 주소 제한이나 유효 시간 제한같은 보안 기술을 사용하며, 토큰을 네트워크에 노출시키지 말아야한다. 
+  
+  ## 크롬80 이슈     
+  - 기존에 있던 쿠키 특성중 Samesite=None 에서 Samsite=Lax가 도입된것    
+  - Samsite란 Cross-Site Request Forgery(CSRF) 공격 클래스에 대한 방어책이다. 
+  - None을 설정하면 외부 사이트에 쿠키 전송할 범위를 정할 수 있는데 그 범위는 아래와 같다.    
+  
+  ```
+  Set-Cookie: CookieName=CookieValue; SameSite=Strict;
+  Set-Cookie: CookieName=CookieValue; SameSite=Lax; 
+  Set-Cookie: CookieName=CookieValue; SameSite=None; Secure
+  
+    - Strict : 이는 특정한 경우 없이, 도메인이 다를경우에 쿠키를 전송하지 않는다.
+    - Lax : 현재 크롬80 이슈를 발생시킨 기본 형식이다 이는 기본 GET 요청과 같은 특정한 경우에만 쿠키를 전송한다. 
+            쿠키를 전송하는 경우 : 링크(href, link), FORM 태그의 GET 
+            쿠키를 전송하지 않는 경우 : iframe, Ajax, Image, FORM 태그의 POST 
+    - None : 다른 도메인에 쿠키를 전송하는 경우이다. 이는 원래 그냥 선언만해주면 자유롭게 사용할 수 있지만     
+             쿠키에 암호화된 HTTPS 연결을 해야한다. 해당 HTTPS 연결은 아래 Secure 특성을 선언해주면 된다.    
+              SameSite=None; Secure (조건은 URL이 HTTPS로 설정이 되어야 한다.)
+  ```    
+  
