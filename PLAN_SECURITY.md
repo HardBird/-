@@ -1,6 +1,8 @@
 ## DB 암복화 
 ✅ 해당 부분은 이 [사이트](https://prohannah.tistory.com/80?category=870127)를 참조하여서 작성을 하였습니다.      
-✅ 암호화에는 SHA나 SEED등 여러가지가 있는데, 이 페이지에서는 CBC 운영모드의 SEED 기반 암 복호화 프로세스를 기반으로함.
+✅ 암호화에는 SHA나 SEED등 여러가지가 있는데, 이 페이지에서는 CBC 운영모드의 SEED 기반 암 복호화 프로세스를 기반으로함.    
+✅ 암호화를 해야하는 정보에 대한 목록은 이 [사이트](https://library.gabia.com/contents/infrahosting/2665/)를 참조하여주세요.
+
   ```
   SEED의 선택 이유 
     - 블록암호 대칭키 알고리즘이다. 
