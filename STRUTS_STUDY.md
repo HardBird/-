@@ -217,6 +217,11 @@
     }
   }  
   ```   
+  ## STRUTS2 DAO,INTERFACE,BEAN 
+    - 기본적으로 최상단 .xml에서 인터페이스와 DAO를 선언해줘야한다.     
+    - ID값이 다르면 호출을 하더라도 null 값을 호출하고 서비스나 DAO를 대입시킬 수 없다.   
+    - 생성자인 BEAN은 별도의 선언없이도, 생성자로 접근하면되기 때문에 핸들링이 필요없다.   
+  
   ## 인프라인증 CI&DI
   ![images](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F991CFB385EE8DDB123)
   - CI
