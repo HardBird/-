@@ -271,6 +271,7 @@ FROM world.country;
 - 크기가 큰 데이터는 DB에 저장하기 힘들기 때문에 OS상 존재하는 파일을 데이터베이스가 접근하게 된다.
 - LONG, LONG RAW 데이터 유형은 예전에 사용던 것이고, 현재는 대부분 LOB 데이터 유형을 사용한다.
 - TO_LOB 함수를 이용하여 LONG 및 LONG RAW 를 LOB 으로 변경할 수 있다.
+- DBMX_LOB를 사용하여 기존에 문자열 형식으로 데이터를 주고 받는것이 아닌 바이트형식으로 주고받기 때문에 속도면에서 DBMS_LOB를 사용하는것이 유리하다.
 
 #### 종류
    - CLOB: 문자 대형 객체 (Character). Oracle Server는 CLOB과 VARCHAR2 사이에 암시적 변환을 수행한다.
