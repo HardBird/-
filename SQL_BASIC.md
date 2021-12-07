@@ -272,17 +272,17 @@ FROM world.country;
 - LONG, LONG RAW 데이터 유형은 예전에 사용던 것이고, 현재는 대부분 LOB 데이터 유형을 사용한다.
 - TO_LOB 함수를 이용하여 LONG 및 LONG RAW 를 LOB 으로 변경할 수 있다.
 
-종류
+#### 종류
    - CLOB: 문자 대형 객체 (Character). Oracle Server는 CLOB과 VARCHAR2 사이에 암시적 변환을 수행한다.
    - BLOB: 이진 대형 객체 (Binary). 이미지, 동영상, MP3 등... 
    - NCLOB: 내셔널 문자 대형 객체 (National). 오라클에서 정의되는 National Character Set을 따르는 문자.
    - BFILE: OS에 저장되는 이진 파일의 이름과 위치를 저장. 읽기 전용 모드로만 액세스 가능.
 
-데이터베이스 내부, 외부에 따라
+#### 데이터베이스 내부, 외부에 따라
    - 내부 : BLOB, CLOB, NCLOB - Table에 LOB 형식의 컬럼을 생성하고 이곳에 데이터의 실제위치를 가리키는 Locator(위치자) 저장.
    - 외부 : BFILE
 
-특징
+#### 특징
 - 하나의 테이블에 여러 개의 LOB 열(column) 가능
 - 최고 4GB까지 저장
 - SELECT로 위치자 반환
@@ -290,7 +290,7 @@ FROM world.country;
 - 임의적 데이터 액세스
  
 
-LOB 구성
+#### LOB 구성
 - LOB 값 : 저장될 실제 객체를 구성하는 데이터
 - LOB 위치자 : 데이터베이스에 저장된 LOB값의 위치에 대한 포인터
 - LOB열에는 데이터가 없고 LOB 위치자만 들어있다.
